@@ -2,9 +2,14 @@ package apps.khadka.streamy
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.media.MediaPlayer
+import android.media.AudioManager
+import java.io.IOException
+import android.bluetooth.BluetoothAdapter
+import android.widget.Toast
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -23,6 +28,16 @@ class MainActivity : AppCompatActivity() {
 
         // Example of a call to a native method
         sample_text.text = stringFromJNI()
+
+        //simple method to handle the media play
+        var url = "https://khadka101.000webhostapp.com/streamy_app/nsdas.mp3"
+        val player = Player()
+        if (Player.player == null)
+        {
+            Player()
+        }
+        Player.player.stream(url)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
